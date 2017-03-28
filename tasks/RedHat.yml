@@ -14,3 +14,14 @@
   package:
     name: jenkins
     state: present
+
+- name: Enable Service
+  service:
+    name: jenkins
+    state: started
+
+- name: Find Files
+  shell: find / -name "jenkins.war"
+  register: __jenkins_war
+
+- debug: var=__jenkins_war
