@@ -1,0 +1,16 @@
+---
+
+- name: Download Repository
+  get_url:
+    url: http://pkg.jenkins-ci.org/redhat/jenkins.repo
+    dest: /etc/yum.repos.d/jenkins.repo
+
+- name: Import Jenkins Package Key
+  rpm_key:
+    state: present
+    key: https://jenkins-ci.org/redhat/jenkins-ci.org.key
+
+- name: Install Jenkins
+  package:
+    name: jenkins
+    state: present
