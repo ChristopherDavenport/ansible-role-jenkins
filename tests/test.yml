@@ -18,7 +18,7 @@
   post_tasks:
     - name: Wait For Service to Come Online
       pause:
-        seconds: 10
+        seconds: 30
     - name: Get Default Password
       command: cat /var/lib/jenkins/secrets/initialAdminPassword
       register: __jenkins_defaultPassword
