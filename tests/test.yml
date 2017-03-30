@@ -18,8 +18,8 @@
       uri:
         url: http://0.0.0.0:8080
         return_content: yes
+        status_code: 403
         follow_redirects: all
       register: __jenkins_webpage
-      failed_when: false
     - name: Debug Webpage
       debug: var=__jenkins_webpage
