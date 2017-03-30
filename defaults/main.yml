@@ -1,1 +1,4 @@
 ---
+
+jenkins_service_start: true
+jenkins_service_enable: true

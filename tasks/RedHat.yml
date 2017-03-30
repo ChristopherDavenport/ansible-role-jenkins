@@ -15,13 +15,22 @@
     name: jenkins
     state: present
 
-- name: Enable Service
+- name: Start Service
   service:
     name: jenkins
     state: started
+  when: jenkins_service_start
+
+- name: Enable Service
+  service:
+    name: jenkins
+    state: enabled
+  when: jenkins_service_enable
 
 - name: Find Files
   shell: find / -name "jenkins.war"
   register: __jenkins_war
+  changed_when: false
 
 - debug: var=__jenkins_war
+  changed_when: false
