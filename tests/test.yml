@@ -19,6 +19,12 @@
     - name: Wait For Service to Come Online
       pause:
         seconds: 10
+    - name: Get Default Password
+      command: cat /var/log/jenkins/jenkins.log
+      register: __jenkins_defaultPassword
+      changed_when: false
+    - name: Debug Password
+      debug: var=__jenkins_defaultPassword
     - name: Check Working URI
       uri:
         url: http://0.0.0.0:8080
