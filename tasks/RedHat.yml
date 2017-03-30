@@ -70,10 +70,10 @@
 #   with_items: jenkins_firewall_services
 #   when: jenkins_firewall_services_enable
 
-- name: Find Files
-  shell: find / -name "jenkins.war"
-  register: __jenkins_war
-  changed_when: false
-
-- debug: var=__jenkins_war
-  changed_when: false
+# - name: Find Files
+#   shell: find / -name "jenkins.war"
+#   register: __jenkins_war
+#   changed_when: false
+#
+# - debug: var=__jenkins_war
+#   changed_when: false
