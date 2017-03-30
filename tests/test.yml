@@ -3,6 +3,7 @@
   vars:
     java_type: Open
     java_version: "8"
+    jenkins_user: testuser
   pre_tasks:
     - name: Update apt cache.
       apt: update_cache=yes
