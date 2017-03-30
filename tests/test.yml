@@ -13,10 +13,12 @@
   post_tasks:
     - name: Wait For Service to Come Online
       pause:
-        seconds: 30
+        seconds: 10
     - name: Check Working URI
       uri:
         url: http://0.0.0.0:8080
+        return_content: yes
+        follow_redirects: all
       register: __jenkins_webpage
       failed_when: false
     - name: Debug Webpage
