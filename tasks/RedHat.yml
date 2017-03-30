@@ -15,6 +15,14 @@
     name: jenkins
     state: present
 
+- name: Apply Jenkins Config
+  template:
+    dest: /etc/sysconfig/jenkins
+    owner: root
+    group: root
+    mode: 0600
+    src: jenkins.j2
+
 - name: Start Service
   service:
     name: jenkins
