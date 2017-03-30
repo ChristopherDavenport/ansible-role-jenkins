@@ -2,3 +2,9 @@
 
 jenkins_service_start: true
 jenkins_service_enable: true
+jenkins_firewall_ports_enable: true
+jenkins_firewall_ports:
+  - "8080/tcp"
+jenkins_firewall_services_enable: true
+jenkins_firewall_services:
+  - http

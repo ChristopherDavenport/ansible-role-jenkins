@@ -26,6 +26,22 @@
     name: jenkins
     enabled: "{{ jenkins_service_enable }}"
 
+- name: Enable Jenkins Firewall Ports
+  firewalld:
+    port: "{{ item }}"
+    permanent: true
+    state: enabled
+  with_items: jenkins_firewall_ports
+  when: jenkins_firewall_ports_enable
+
+- name: Enable Jenkins Firewall Services
+  firewalld:
+    service: "{{ item }}"
+    permanent: true
+    state: enabled
+  with_items: jenkins_firewall_services
+  when: jenkins_firewall_services_enable
+
 - name: Find Files
   shell: find / -name "jenkins.war"
   register: __jenkins_war
