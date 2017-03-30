@@ -11,9 +11,37 @@
     key: https://jenkins-ci.org/redhat/jenkins-ci.org.key
 
 - name: Install Jenkins
+  register: __jenkins_install
   package:
     name: jenkins
     state: present
+
+- name: Apply Jenkins Config
+  register: __jenkins_config
+  template:
+    dest: /etc/sysconfig/jenkins
+    owner: root
+    group: root
+    mode: 0600
+    src: jenkins.j2
+
+- name: Ensure Correct Ownership
+  file:
+    path: "{{ item }}"
+    state: directory
+    recurse: yes
+    owner: "{{ jenkins_user }}"
+    group: "{{ jenkins_user }}"
+  with_items:
+    - /var/log/jenkins
+    - /var/lib/jenkins
+    - /var/cache/jenkins
+
+- name: Reload Service
+  service:
+    name: jenkins
+    state: reloaded
+  when: __jenkins_install|changed or __jenkins_config|changed
 
 - name: Start Service
   service:
@@ -42,10 +70,10 @@
 #   with_items: jenkins_firewall_services
 #   when: jenkins_firewall_services_enable
 
-- name: Find Files
-  shell: find / -name "jenkins.war"
-  register: __jenkins_war
-  changed_when: false
-
-- debug: var=__jenkins_war
-  changed_when: false
+# - name: Find Files
+#   shell: find / -name "jenkins.war"
+#   register: __jenkins_war
+#   changed_when: false
+#
+# - debug: var=__jenkins_war
+#   changed_when: false
