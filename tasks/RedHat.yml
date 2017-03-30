@@ -40,7 +40,7 @@
 #     permanent: true
 #     state: enabled
 #   with_items: jenkins_firewall_services
-  when: jenkins_firewall_services_enable
+#   when: jenkins_firewall_services_enable
 
 - name: Find Files
   shell: find / -name "jenkins.war"
