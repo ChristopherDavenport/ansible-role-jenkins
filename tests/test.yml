@@ -15,7 +15,7 @@
     #   uri:
     #     url: http://localhost:8080
     - name: Capture Config
-      command: cat /etc/sysconfig/jenkins
+      command: ls -lah /etc/sysconfig/jenkins
       register: __jenkins_config
       changed_when: false
     - name: Debug Config
