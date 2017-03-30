@@ -25,6 +25,18 @@
     mode: 0600
     src: jenkins.j2
 
+- name: Ensure Correct Ownership
+  file:
+    path: "{{ item }}"
+    state: directory
+    recurse: yes
+    owner: "{{ jenkins_user }}"
+    group: "{{ jenkins_user }}"
+  with_items:
+    - /var/log/jenkins
+    - /var/lib/jenkins
+    - /var/cache/jenkins
+
 - name: Reload Service
   service:
     name: jenkins
