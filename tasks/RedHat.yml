@@ -24,7 +24,7 @@
 - name: Enable Service
   service:
     name: jenkins
-    enable: "{{ jenkins_service_enable }}"
+    enabled: "{{ jenkins_service_enable }}"
 
 - name: Find Files
   shell: find / -name "jenkins.war"
