@@ -28,6 +28,7 @@
     - name: Check Working URI
       uri:
         url: http://0.0.0.0:8080
+        force_basic_auth: yes
         return_content: yes
         status_code: 200
         follow_redirects: all
