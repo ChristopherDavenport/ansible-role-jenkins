@@ -11,13 +11,13 @@
   roles:
     - role_under_test
   post_tasks:
-    # - name: Check Working URI
-    #   uri:
-    #     url: http://localhost:8080
-    - name: Capture Config
-      command: ls -lah /etc/sysconfig/jenkins
-      register: __jenkins_config
-      changed_when: false
-    - name: Debug Config
-      debug: var=__jenkins_config
-      changed_when: false
+    - name: Wait For Service to Come Online
+      pause:
+        seconds: 30
+    - name: Check Working URI
+      uri:
+        url: http://0.0.0.0:8080
+      register: __jenkins_webpage
+      failed_when: false
+    - name: Debug Webpage
+      debug: var=__jenkins_webpage
