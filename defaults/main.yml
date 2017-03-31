@@ -19,3 +19,5 @@ jenkins_enable_access_log: "no"
 jenkins_handler_max: "100"
 jenkins_handler_idle: "20"
 jenkins_args: ""
+
+jenkins_jar_location: /usr/lib/jenkins/jenkins.war
