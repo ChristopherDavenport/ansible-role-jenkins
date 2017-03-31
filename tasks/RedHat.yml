@@ -43,13 +43,12 @@
     state: reloaded
   when: __jenkins_install|changed or __jenkins_config|changed
 
-- name: Start Service
+- name: Jenkins Service State
   service:
     name: jenkins
-    state: started
-  when: jenkins_service_start
+    state: "{{ jenkins_service_state }}"
 
-- name: Enable Service
+- name: Jenkins Service Enable Manager
   service:
     name: jenkins
     enabled: "{{ jenkins_service_enable }}"
