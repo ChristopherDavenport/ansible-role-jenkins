@@ -21,3 +21,4 @@ jenkins_handler_idle: "20"
 jenkins_args: ""
 
 jenkins_jar_location: /usr/lib/jenkins/jenkins.war
+jenkins_initialAdminPassword_location: /var/lib/jenkins/secrets/initialAdminPassword

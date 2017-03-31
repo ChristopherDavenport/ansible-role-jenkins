@@ -17,10 +17,10 @@
     - role_under_test
   post_tasks:
     - name: Wait For Service to Come Online
-      pause:
-        seconds: 30
+      wait_for:
+        path: "{{ jenkins_initialAdminPassword_location }}"
     - name: Get Default Password
-      command: cat /var/lib/jenkins/secrets/initialAdminPassword
+      command: cat {{ jenkins_initialAdminPassword_location }}
       register: __jenkins_defaultPassword
       changed_when: false
     - name: Debug Password
