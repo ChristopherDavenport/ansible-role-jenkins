@@ -19,6 +19,9 @@
     - name: Wait For Service to Come Online
       wait_for:
         path: "{{ jenkins_initialAdminPassword_location }}"
+    - name: Final Pause
+      pause:
+        seconds: 5
     - name: Get Default Password
       command: cat {{ jenkins_initialAdminPassword_location }}
       register: __jenkins_defaultPassword
