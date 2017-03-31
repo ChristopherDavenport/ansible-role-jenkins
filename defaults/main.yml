@@ -1,13 +1,7 @@
 ---
 
-jenkins_service_start: true
+jenkins_service_state: started
 jenkins_service_enable: true
-jenkins_firewall_ports_enable: true
-jenkins_firewall_ports:
-  - "8080/tcp"
-jenkins_firewall_services_enable: true
-jenkins_firewall_services:
-  - http
 
 jenkins_home: /var/lib/jenkins
 jenkins_java_cmd: ""
@@ -25,3 +19,5 @@ jenkins_enable_access_log: "no"
 jenkins_handler_max: "100"
 jenkins_handler_idle: "20"
 jenkins_args: ""
+
+jenkins_jar_location: /usr/lib/jenkins/jenkins.war
